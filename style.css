@@ -1,0 +1,55 @@
+/* Custom Configuration for Theme and Font */
+:root {
+    --primary-bg: #0A0A0A;
+    --accent-color: #00C4FF;
+    --card-bg: #1A1A1A;
+}
+
+/* Set the entire body to dark mode and Inter font */
+body {
+    background-color: var(--primary-bg);
+    color: #E5E7EB;
+    /* Light gray text */
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar for Carousel (Webkit) */
+.carousel-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carousel-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 196, 255, 0.4);
+    /* Teal transparent */
+    border-radius: 4px;
+}
+
+.carousel-container::-webkit-scrollbar-track {
+    background: var(--card-bg);
+}
+
+/* Hero Gradient Overlay for Text Legibility */
+.hero-overlay {
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.0) 0%, rgba(10, 10, 10, 0.8) 100%);
+}
+
+/* Accent Color Utility */
+.text-accent {
+    color: var(--accent-color);
+}
+
+.bg-accent {
+    background-color: var(--accent-color);
+}
+
+.border-accent {
+    border-color: var(--accent-color);
+}
+
+/* Card Hover Effect */
+.movie-card:hover .poster-image {
+    filter: brightness(1.1);
+    transform: scale(1.03);
+}
+

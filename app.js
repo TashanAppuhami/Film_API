@@ -66,3 +66,57 @@ window.onload = function () {
 };
 
 
+const movieData = document.getElementById('searchBar');
+const suggestions = document.getElementById('suggestions'); //suggestion box
+
+
+movieData.addEventListener('input', function () {
+    const query = movieData.value.trim();
+
+    if (query.length < 3) {
+        suggestions.innerHTML = "";
+        suggestions.style.display = "none";
+        return;
+    }
+
+    fetch(`https://www.omdbapi.com/?apikey=1ac807c5&s=${query}`)
+        .then(response => response.json())
+        .then(data => {
+            suggestions.innerHTML = "";
+
+            if (data.Response === "True") {
+                suggestions.style.display = "block";
+                data.Search.forEach(movie => {
+                    const div = document.createElement("div");
+                    div.innerHTML = `<img src="${movie.Poster}" alt="${movie.Title}" width="100" height="70" style="object-fit:cover; margin-right:10px;">
+                                     <span><b>${movie.Title}</span>`;
+                    div.style.display = "flex";
+                    div.style.alignItems = "center";
+                    div.style.padding = "5px";
+                    div.style.cursor = "pointer";
+
+                    div.onclick = () => {
+                        movieData.value = movie.Title;
+                        suggestions.innerHTML = "";
+                        loadMovieDetails(movie.imdbID);
+                    };
+
+                    suggestions.appendChild(div);
+                });
+            }
+        });
+
+});
+
+function loadMovieDetails(imdbID) {
+    fetch(`https://www.omdbapi.com/?apikey=1ac807c5&i=${imdbID}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.Response === "True") {
+                alert(`Title: ${data.Title}\nYear: ${data.Year}\nGenre: ${data.Genre}\nPlot: ${data.Plot}`);
+            } else {
+                alert("Movie details not found.");
+            }
+
+        });
+}

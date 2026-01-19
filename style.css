@@ -53,16 +53,93 @@ body {
     transform: scale(1.03);
 }
 
+.hiddenSearchBar {
+    position: absolute;
+    top: 60px;
+    /* below navbar */
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, #0f0f17, #0b0b10);
+    backdrop-filter: blur(50px);
+    padding: 20px 0;
+    z-index: 999;
+    display: none;
+}
+
+#searchBtn {
+    cursor: pointer;
+    font-size: 20px;
+    color: #9ca3af;
+}
+#searchBtn:hover {
+   text-shadow: 0 0 8px #00bfff,
+        0 0 16px #00bfff,
+        0 0 24px #00bfff;
+}
+
+#searchBar {
+    margin: 0 auto;
+    width: 600px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 0 20px;
+    border-radius: 30px;
+
+    background-color: #1a1a22;
+    border: 1px solid #2c2c35;
+}
+
+#searchBar:focus-within {
+    box-shadow: 0 0 0px #00bfff,
+        0 0 2px #00bfff,
+        0 0 4px #00bfff,
+        0 0 6px #00bfff;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+#searchBar-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+
+    color: #e5e7eb;
+    font-size: 16px;
+}
+
+#closeBtn {
+    cursor: pointer;
+    font-size: 20px;
+    color: #9ca3af;
+}
+
+#closeBtn:hover {
+   text-shadow: 0 0 8px #00bfff,
+        0 0 16px #00bfff,
+        0 0 24px #00bfff;
+}
+#closeBtn:active {
+    transform: scale(0.95);
+}
+
 #suggestions {
     position: absolute;
-    background-color: var(--card-bg);
-    border: 1px solid #333;
-    width: 150%;
-    max-height: 300px;
-    margin-top: 30px;
-    border-radius: 20px;
-    padding: 30px;
-    display: none;
+    top: 165px;
+    /* below search bar */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    padding: 20px;
+    padding-top: 10px;
+    max-height: 400px;
     overflow-y: auto;
+    background-color: #1a1a22;
+    border: 1px solid #2c2c35;
+    border-radius: 8px;
     z-index: 1000;
+    display: none;
 }

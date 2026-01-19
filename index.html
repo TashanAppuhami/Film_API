@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CineSearch | Discover Your Next Obsession</title>
-    <!-- Load Tailwind CSS -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -26,21 +27,9 @@
                 <a href="#" class="text-gray-400 hover:text-accent transition duration-150">Movies</a>
                 <a href="#" class="text-gray-400 hover:text-accent transition duration-150">TV Shows</a>
                 <a href="#" class="text-gray-400 hover:text-accent transition duration-150">Genres</a>
-            </nav>
 
-            <!-- Search Bar (Desktop) -->
-            <div class="relative hidden md:block w-96">
-                <input type="text" placeholder="Search for titles, actors, or keywords..."
-                    class="w-full bg-gray-800 text-white rounded-full py-2 pl-10 pr-4 focus:ring-2 focus:ring-accent focus:outline-none transition duration-200"
-                    aria-label="Search for titles, actors, or keywords" id="searchBar">
-                <!-- Search Icon (Magnifying Glass) -->
-                <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                <div id="suggestions"></div>
-            </div>
+            </nav>
+            <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
 
             <!-- User Profile/Auth -->
             <button class="flex items-center space-x-2 text-gray-400 hover:text-white transition duration-150">
@@ -52,6 +41,14 @@
                 </svg>
             </button>
         </div>
+
+        <div class="hiddenSearchBar">
+            <div id="searchBar" >
+                <input type="text" id="searchBar-input" placeholder="Search">
+                <button id="closeBtn">✕</button>
+            </div>
+        </div>
+        <div id="suggestions"></div>
     </header>
 
     <!-- 2. Hero Section -->

@@ -66,8 +66,22 @@ window.onload = function () {
 };
 
 
-const movieData = document.getElementById('searchBar');
-const suggestions = document.getElementById('suggestions'); //suggestion box
+const suggestions = document.getElementById('suggestions'); //suggestion box\\
+const searchBtn = document.getElementById('searchBtn');
+const hiddenSearchBar = document.querySelector('.hiddenSearchBar');
+const movieData = document.getElementById('searchBar-input'); //search input box\\
+const closeBtn = document.getElementById('closeBtn');
+
+closeBtn.onclick = () => {
+    hiddenSearchBar.style.display="none";
+    suggestions.style.display="none";
+    movieData.value = "";
+}
+
+searchBtn.onclick = () => {
+    hiddenSearchBar.style.display="block";
+    movieData.focus();
+}
 
 
 movieData.addEventListener('input', function () {
@@ -89,7 +103,8 @@ movieData.addEventListener('input', function () {
                 data.Search.forEach(movie => {
                     const div = document.createElement("div");
                     div.innerHTML = `<img src="${movie.Poster}" alt="${movie.Title}" width="100" height="70" style="object-fit:cover; margin-right:10px;">
-                                     <span><b>${movie.Title}</span>`;
+                                     <span><b>${movie.Title}</span>
+                                     <span><b>${movie.Year}</span>`;
                     div.style.display = "flex";
                     div.style.alignItems = "center";
                     div.style.padding = "5px";

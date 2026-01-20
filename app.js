@@ -32,7 +32,7 @@ function createMovieCard(movie) {
                             <!-- Hover Overlay -->
                             <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
                                 <p class="text-xs text-gray-300 mb-2">${movie.genres}</p>
-                                <button class="bg-accent text-black font-bold text-sm py-2 rounded-lg hover:bg-white transition">
+                                <button class="bg-accent text-black font-bold text-sm py-2 rounded-lg hover:bg-white transition active: color-blue" onclick="openPopUp(${movies[movie.id - 1]})">
                                     View Details
                                 </button>
                                 <button class="mt-2 text-white border border-white/50 text-sm py-1 rounded-lg hover:bg-white/20 transition">
@@ -71,15 +71,16 @@ const searchBtn = document.getElementById('searchBtn');
 const hiddenSearchBar = document.querySelector('.hiddenSearchBar');
 const movieData = document.getElementById('searchBar-input'); //search input box\\
 const closeBtn = document.getElementById('closeBtn');
+const movieCard = document.getElementById('popUp-movie');
 
 closeBtn.onclick = () => {
-    hiddenSearchBar.style.display="none";
-    suggestions.style.display="none";
+    hiddenSearchBar.style.display = "none";
+    suggestions.style.display = "none";
     movieData.value = "";
 }
 
 searchBtn.onclick = () => {
-    hiddenSearchBar.style.display="block";
+    hiddenSearchBar.style.display = "block";
     movieData.focus();
 }
 
@@ -102,17 +103,25 @@ movieData.addEventListener('input', function () {
                 suggestions.style.display = "block";
                 data.Search.forEach(movie => {
                     const div = document.createElement("div");
-                    div.innerHTML = `<img src="${movie.Poster}" alt="${movie.Title}" width="100" height="70" style="object-fit:cover; margin-right:10px;">
-                                     <span><b>${movie.Title}</span>
-                                     <span><b>${movie.Year}</span>`;
+                    div.id = "movie-row";
+                    div.innerHTML = `<img src="${movie.Poster}" class="movie-poster">
+
+                                    <div class="movie-info">
+                                        <h3 class="movie-title">
+                                            ${movie.Title}
+                                        </h3>
+                                        <p class="movie-meta">
+                                            ${movie.Year}
+                                        </p>
+                                    </div>`;
                     div.style.display = "flex";
                     div.style.alignItems = "center";
-                    div.style.padding = "5px";
+                    div.style.padding = "10px";
                     div.style.cursor = "pointer";
 
                     div.onclick = () => {
                         movieData.value = movie.Title;
-                        suggestions.innerHTML = "";
+                        suggestions.style.display = "none";
                         loadMovieDetails(movie.imdbID);
                     };
 
@@ -128,10 +137,36 @@ function loadMovieDetails(imdbID) {
         .then(response => response.json())
         .then(data => {
             if (data.Response === "True") {
-                alert(`Title: ${data.Title}\nYear: ${data.Year}\nGenre: ${data.Genre}\nPlot: ${data.Plot}`);
-            } else {
-                alert("Movie details not found.");
+                openPopUp(data);
             }
-
         });
+}
+
+function openPopUp(data) {
+    movieCard.innerHTML = `
+                <button id="closePopUpBtn" onclick="document.getElementById('popUp-movie').style.display='none'; movieData.focus()">✕</button>
+                    <img src="${data.Poster}" alt="${data.Title} Poster" class="pop-movie-poster">
+                    <div class="pop-movie-info">
+                        <h2 class="pop-movie-title">${data.Title} (${data.Year})</h2>
+                        <div class="rating">
+                            <span class="imdb-rating">IMDb: ${data.imdbRating}</span>
+                            <span class="votes">(${data.imdbVotes} votes)</span>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">${data.Rated}</span>
+                            <span class="tag">${data.Genre.split(', ')[0]}</span>
+                            <span class="tag">${data.Runtime}</span>
+                        </div>
+                        <p class="plot">${data.Plot}</p>
+                        <div class="details">
+                            <p><strong>Director:</strong> ${data.Director}</p>
+                            <p><strong>Writer:</strong> ${data.Writer}</p>
+                            <p><strong>Actors:</strong> ${data.Actors}</p>
+                            <p><strong>Genre:</strong> ${data.Genre.split(', ')}</p>
+                            <p><strong>Language:</strong> ${data.Language}</p>
+                            <p><strong>Country:</strong> ${data.Country}</p>
+                            <p><strong>Awards:</strong> ${data.Awards}</p>
+                        </div>
+                    </div>`;
+                movieCard.style.display = "flex";
 }

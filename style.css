@@ -53,6 +53,67 @@ body {
     transform: scale(1.03);
 }
 
+
+
+.signInBtn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid #444;
+    color: #ccc;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+#userIcon {
+    margin-left: 8px;
+    font-size: 20px;
+}
+
+#searchBtn {
+    position: relative;
+    right: 100px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #9ca3af;
+}
+
+#searchBtn:hover {
+    text-shadow: 0 0 8px #00bfff,
+        0 0 16px #00bfff,
+        0 0 24px #00bfff;
+}
+
+#searchBtn:active {
+    transform: scale(0.95);
+}
+
+#discoverBtn {
+    position: absolute;
+    right: 130px;
+    top: 15px;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid #444;
+    color: #ccc;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#discoverIcon {
+    margin-left: 8px;
+    font-size: 18px;
+}
+
 .hiddenSearchBar {
     position: absolute;
     top: 60px;
@@ -66,29 +127,15 @@ body {
     display: none;
 }
 
-#searchBtn {
-    cursor: pointer;
-    font-size: 20px;
-    color: #9ca3af;
-}
-#searchBtn:hover {
-   text-shadow: 0 0 8px #00bfff,
-        0 0 16px #00bfff,
-        0 0 24px #00bfff;
-}
-
 #searchBar {
     margin: 0 auto;
     width: 600px;
     height: 50px;
-
     display: flex;
     align-items: center;
     gap: 10px;
-
     padding: 0 20px;
     border-radius: 30px;
-
     background-color: #1a1a22;
     border: 1px solid #2c2c35;
 }
@@ -118,10 +165,11 @@ body {
 }
 
 #closeBtn:hover {
-   text-shadow: 0 0 8px #00bfff,
+    text-shadow: 0 0 8px #00bfff,
         0 0 16px #00bfff,
         0 0 24px #00bfff;
 }
+
 #closeBtn:active {
     transform: scale(0.95);
 }
@@ -142,4 +190,149 @@ body {
     border-radius: 8px;
     z-index: 1000;
     display: none;
+}
+
+.movie-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+
+    padding: 15px 0;
+    border-bottom: 1px solid #1f1f1f;
+
+    background-color: #000;
+    color: #fff;
+}
+
+/* Poster */
+.movie-poster {
+    width: 90px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+
+/* Right side content */
+.movie-info {
+    flex: 1;
+    margin-left: 15px;
+}
+
+/* Title */
+.movie-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    line-height: 1.4;
+}
+
+/* Year & duration */
+.movie-meta {
+    font-size: 13px;
+    color: #9ca3af;
+    margin: 0 0 4px 0;
+}
+
+/* Genres */
+.movie-genre {
+    font-size: 13px;
+    color: #9ca3af;
+    margin: 0;
+}
+
+
+#popUp-movie {
+    position: fixed;
+    display: none;
+    top: 10%;
+    left: 25%;
+    width: 700px;
+    height: auto;
+    background-color: #1a1a22;
+    border: 1px solid #2c2c35;
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 10000;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.pop-movie-poster {
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.pop-movie-info {
+    margin-left: 20px;
+    flex: 1;
+}
+
+.pop-movie-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.rating {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.rating .imdb-rating {
+    background-color: #555;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.rating .votes {
+    color: #bbb;
+}
+
+.tags {
+    margin: 10px 0;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #333;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+.plot {
+    font-size: 14px;
+    margin: 25px 0 40px 0;
+    line-height: 1.4;
+}
+
+.details p {
+    margin: 4px 0;
+    font-size: 13px;
+}
+
+.details strong {
+    color: #f0c040;
+}
+
+#closePopUpBtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    color: #bbb;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#closePopUpBtn:hover {
+    text-shadow:
+            0 0 6px #00bfff,
+            0 0 12px #00bfff,
+            0 0 20px #00bfff;
 }

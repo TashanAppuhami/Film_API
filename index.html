@@ -16,13 +16,13 @@
     <!-- 1. Header and Navigation -->
     <header class="sticky top-0 z-50 bg-black/90 backdrop-blur-sm shadow-xl border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-            <!-- Logo -->
-            <a href="#" class="flex items-center space-x-2 text-xl font-extrabold tracking-wider text-accent">
+
+            <h1 class="space-x-2 font-extrabold tracking-wider text-accent md:text-2xl">
                 🎬 Cine<span class="text-white">Search</span>
-            </a>
+            </h1>
 
             <!-- Navigation Links (Hidden on small screens) -->
-            <nav class="hidden md:flex space-x-8">
+            <nav  id="navLinks">
                 <a href="#" class="text-white font-medium hover:text-accent transition duration-150">Home</a>
                 <a href="#" class="text-gray-400 hover:text-accent transition duration-150">Movies</a>
                 <a href="#" class="text-gray-400 hover:text-accent transition duration-150">TV Shows</a>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="hiddenSearchBar">
-            <div id="searchBar" >
+            <div id="searchBar">
                 <input type="text" id="searchBar-input" placeholder="Search">
                 <button id="closeBtn">✕</button>
             </div>
@@ -54,7 +54,7 @@
 
     <!-- 2. Hero Section -->
     <main class="relative max-w-7xl mx-auto">
-        <div class="relative h-[60vh] md:h-[80vh] overflow-hidden rounded-b-lg">
+        <div class="relative h-[60vh] md:h-[80vh] overflow-hidden rounded-b-lg" id="heroSection">
             <!-- Featured Movie Background Image -->
             <img src="https://placehold.co/1920x1080/007FFF/FFFFFF?text=Featured+Blockbuster+Hero"
                 alt="Featured Movie Poster"
@@ -93,7 +93,7 @@
         <div class="md:hidden -mt-8 mx-4 z-40 relative">
             <input type="text" placeholder="Search for titles, actors, or keywords..."
                 class="w-full bg-gray-900 text-white rounded-xl py-3 pl-12 pr-4 shadow-2xl focus:ring-2 focus:ring-accent focus:outline-none transition duration-200"
-                aria-label="Quick Search" >
+                aria-label="Quick Search">
             <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 h-6 w-6 text-gray-400" fill="none"
                 viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

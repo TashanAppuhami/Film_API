@@ -53,12 +53,18 @@ body {
     transform: scale(1.03);
 }
 
+#navLinks{
+    position: absolute;
+    left: 42%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
 
+}
 
 .signInBtn {
     position: absolute;
     right: 20px;
-    top: 15px;
     display: flex;
     align-items: center;
     background-color: transparent;
@@ -77,8 +83,8 @@ body {
 }
 
 #searchBtn {
-    position: relative;
-    right: 100px;
+    position: absolute;
+    right: 15%;
     cursor: pointer;
     font-size: 20px;
     color: #9ca3af;
@@ -97,7 +103,6 @@ body {
 #discoverBtn {
     position: absolute;
     right: 130px;
-    top: 15px;
     display: flex;
     align-items: center;
     background-color: transparent;
@@ -109,9 +114,68 @@ body {
     cursor: pointer;
 }
 
+#discoverBtn:hover {
+    border-color: #00bfff;
+    color: #00bfff;
+    transition: all 0.3s ease-in-out;
+}
+
+#discoverBtn:active {
+    background-color: #00bfff;
+    color: #000;
+    transform: scale(0.95);
+}
+
+
 #discoverIcon {
     margin-left: 8px;
     font-size: 18px;
+}
+
+@media (max-width: 1536px) {
+    
+    
+}
+/* 
+@media (max-width: 1280px) {
+    #searchBtn {
+        right: 10%;
+    }
+}
+
+@media (max-width: 1024px) {
+    #searchBtn {
+        right: 10%;
+    }
+}
+
+@media (max-width: 640px) {
+    #searchBtn {
+        right: 10%;
+    }
+} */
+
+@media (max-width: 768px) {
+    #navLinks {
+        display: none; 
+        gap: 10px;
+    }
+    #discoverBtn {
+        display: none;
+    }
+    #searchBtn {
+        /* display: none; */
+    }
+    .signInBtn {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+    #userIcon {
+        display: none;
+    }
+    #heroSection {
+        display: none;
+    }
 }
 
 .hiddenSearchBar {
@@ -125,6 +189,8 @@ body {
     padding: 20px 0;
     z-index: 999;
     display: none;
+
+
 }
 
 #searchBar {

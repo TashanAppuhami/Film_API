@@ -50,6 +50,12 @@ function createMovieCard(movie) {
                 `;
 }
 
+window.onload = function () {
+    
+    renderMovieCarousel('trending-movies', movies);
+    renderMovieCarousel('highest-rated', movies.slice(3, 11).sort((a, b) => b.rating - a.rating));
+    renderMovieCarousel('just-added', movies.slice(6));
+};
 
 function renderMovieCarousel(containerId, movies) {
     const container = document.getElementById(containerId);
@@ -58,12 +64,11 @@ function renderMovieCarousel(containerId, movies) {
     }
 }
 
+function renderTopRatedMovies(containerId, movies) {
+    const container = document.getElementById(containerId);
+}
 
-window.onload = function () {
-    renderMovieCarousel('trending-movies', movies);
-    renderMovieCarousel('highest-rated', movies.slice(3, 11).sort((a, b) => b.rating - a.rating));
-    renderMovieCarousel('just-added', movies.slice(6));
-};
+
 
 
 const suggestions = document.getElementById('suggestions'); //suggestion box\\
@@ -86,7 +91,7 @@ searchBtn.onclick = () => {
 
 
 movieData.addEventListener('input', function () {
-    const query = movieData.value.trim();
+    const query = movieData.value;
 
     if (query.length < 3) {
         suggestions.innerHTML = "";

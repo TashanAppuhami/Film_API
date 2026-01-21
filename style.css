@@ -132,29 +132,6 @@ body {
     font-size: 18px;
 }
 
-@media (max-width: 1536px) {
-    
-    
-}
-/* 
-@media (max-width: 1280px) {
-    #searchBtn {
-        right: 10%;
-    }
-}
-
-@media (max-width: 1024px) {
-    #searchBtn {
-        right: 10%;
-    }
-}
-
-@media (max-width: 640px) {
-    #searchBtn {
-        right: 10%;
-    }
-} */
-
 @media (max-width: 768px) {
     #navLinks {
         display: none; 
@@ -164,7 +141,7 @@ body {
         display: none;
     }
     #searchBtn {
-        /* display: none; */
+        display: none;
     }
     .signInBtn {
         font-size: 12px;
